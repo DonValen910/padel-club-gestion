@@ -9,6 +9,12 @@ El foco está puesto en la **operación diaria real**, donde el tiempo es limita
 
 ---
 
+## 🚀 Inicio rápido
+
+Para configurar el proyecto en tu equipo, consulta [SETUP.md](SETUP.md).
+
+---
+
 ## 🎯 Objetivo principal
 
 Permitir al recepcionista:
@@ -83,6 +89,36 @@ Permitir al recepcionista:
 
 ---
 
+## 🧪 Estado actual del proyecto
+
+### ✅ Implementado
+- Configuración base del proyecto con Vite + React
+- Panda CSS para estilos (design system)
+- Componente `Card` para representar días
+- Iconos SVG personalizados
+- Sistema de colores definido:
+  - Naranja: `#FF7E2D`
+  - Rojo: `#F00808`
+  - Verde: `#1AA113`
+  - Negro: `#010101`
+  - Blanco: `#F1F1F1`
+
+### 🚧 En desarrollo
+- Vista calendario mensual
+- Sistema de rutas con React Router
+- Gestión de estado con Zustand
+- Integración con Supabase (pendiente)
+
+### 📋 Pendiente
+- Gestión completa de reservas
+- Sistema de consumos e insumos
+- Cálculo de totales y pagos
+- Vista de resumen diario
+- Autenticación de usuarios
+- Deploy en Vercel
+
+---
+
 ## 🧪 Alcance inicial (MVP)
 
 - Un único rol operativo.
@@ -104,22 +140,22 @@ Permitir al recepcionista:
 ## 🛠️ Stack tecnológico
 
 ### Frontend
-- Vite
-- React
-- styled-components
-- React Router
-- Zustand
-- dayjs o date-fns
+- **Vite** (npm:rolldown-vite@7.2.5) - Build tool
+- **React** v19.2.0 - UI framework
+- **Panda CSS** - Design system y estilos
+- **React Router** v7.11.0 - Navegación
+- **dayjs** - Manejo de fechas
+- **Zustand** v5.0.9 - Gestión de estado global
 
-### Backend
+### Backend (pendiente)
 - Supabase
 
-### Deploy
+### Deploy (pendiente)
 - Vercel
 
-### Herramientas
-- ESLint
-- Prettier
+### Herramientas de desarrollo
+- ESLint - Linting
+- pnpm - Gestor de paquetes
 
 ---
 
@@ -139,5 +175,30 @@ Se prioriza:
 - Rapidez
 - Uso práctico
 - Escalabilidad controlada
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+padel-club-gestion/
+├── public/                 # Archivos estáticos
+├── src/
+│   ├── components/        # Componentes React
+│   │   ├── Card.jsx      # Componente de tarjeta de día
+│   │   └── icons/        # Iconos SVG
+│   ├── assets/           # Recursos (imágenes, etc.)
+│   ├── App.jsx           # Componente principal
+│   ├── main.jsx          # Punto de entrada
+│   ├── index.css         # Estilos globales
+│   └── globalCss.js      # Configuración CSS global
+├── styled-system/         # Sistema de estilos generado por Panda CSS
+├── panda.config.mjs      # Configuración de Panda CSS
+├── vite.config.js        # Configuración de Vite
+├── eslint.config.js      # Configuración de ESLint
+└── package.json          # Dependencias y scripts
+```
+
+---
 
 > Sistema de gestión interna para club deportivo
