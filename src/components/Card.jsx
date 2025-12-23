@@ -5,6 +5,7 @@ const CardStyles = css({
 	minHeight: '50px',
 	backgroundColor: 'var(--color-negro)',
 	color: 'var(--color-blanco)',
+	border: '1px solid var(--color-blanco)',
 	borderRadius: '1rem',
 	width: '325px',
 	textAlign: 'center',
