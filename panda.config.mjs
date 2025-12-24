@@ -18,6 +18,24 @@ export default defineConfig({
       '--color-verde': '#1AA113',
       '--color-negro': '#010101',
       '--color-blanco': '#F1F1F1',
+      '--color-azul': '#2EA1F4',
+
+      '--fuente-montserrat': "'Montserrat', sans-serif",
+      '--fuente-work-sans': "'Work Sans', sans-serif"
+    },
+    'body': {
+      background: '#1b1a1a'
+    },
+    '#root': {
+      maxWidth: '1350px',
+      margin: '0 auto',
+      background: 'var(--color-negro)'
+    },
+    'h1, h2, h3, h4': {
+      fontFamily: 'var(--fuente-montserrat)'
+    },
+    'p, a, span': {
+      fontFamily: 'var(--fuente-work-sans)'
     }
   },
 
