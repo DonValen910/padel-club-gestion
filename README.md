@@ -95,7 +95,7 @@ Permitir al recepcionista:
 - Configuración base del proyecto con Vite + React
 - Panda CSS para estilos (design system)
 - Componente `Card` para representar días
-- Iconos SVG personalizados
+- Iconos SVG personalizados con Material Symbols
 - Sistema de colores definido:
   - Naranja: `#FF7E2D`
   - Rojo: `#F00808`
