@@ -1,41 +1,72 @@
 import { css } from '../../styled-system/css'
 import FlechaDerecha from './icons/FlechaDerecha';
+import FlechaAbajo from './icons/FlechaAbajo';
+import InfoMini from './InfoMini';
 
-const CardStyles = css({
-	minHeight: '50px',
+const ReservaCardContenedor = css({
+	minHeight: '70px',
 	backgroundColor: 'var(--color-negro)',
 	color: 'var(--color-blanco)',
 	border: '1px solid var(--color-blanco)',
 	borderRadius: '1rem',
-	width: '325px',
 	textAlign: 'center',
 	display: 'flex',
 	alignItems: 'center',
-	justifyContent: 'space-between',
-	gap: '1rem',
-	overflow: 'hidden',
+	flexDirection: 'column',
+	gap: '.5rem',
+})
+
+const ReservaCardIndicadorEstadoBase = css({
+	width: '60px',
+	height: '60px',
+	margin: '5px',
+	borderRadius: '1rem'
+})
+
+const ReservaCardTextoEncabezado = css({
+	fontSize: '24px',
+})
+
+const ReservaCardLineDivisoria = css({
+	width: '300px',
+	height: '1px',
+	backgroundColor: 'var(--color-blanco)'
+})
+
+const ReservaCardSeccionEncabezado = css({
+	display: 'flex',
+	alignItems: 'center',
 	cursor: 'pointer'
 })
 
-const CardEstadoBase = css({
-	width: '60px',
-	height: '50px',
+const ReservaCardSeccionPieDePagina = css({
+	width: '300px',
+	display: 'grid',
+	gap: '0.3125rem'
 })
 
-const CardText = css({
-	width: '100%',
-	fontSize: '1.5rem',
-	display: 'flex',
-	justifyContent: 'space-between'
+const ReservaCardInformacion = css({
+    fontSize: '1.125rem',
+})
+
+const ReservaCardIconoExpandir = css({
+	display: 'grid',
+	placeItems: 'center',
+	cursor: 'pointer'
 })
 
 function Card({ TipoEstado, Fecha }) {
 	let estadoColor = '';
-	
+
 	switch (TipoEstado) {
 		case "Pendiente":
 			estadoColor = css({
 				backgroundColor: 'var(--color-naranja)',
+				display: 'grid',
+				placeItems: 'center',
+				fontSize: '24px',
+				fontWeight: 'bold',
+				fontFamily: 'var(--fuente-montserrat)'
 			})
 			break;
 
@@ -55,15 +86,24 @@ function Card({ TipoEstado, Fecha }) {
 			console.log("Tipo de estado no reconocido");
 			break;
 	}
-	
-	const CardEstadoColor = `${CardEstadoBase} ${estadoColor}`
+
+	const reservaCardIndicadorConEstado = `${ReservaCardIndicadorEstadoBase} ${estadoColor}`
+	const Texto = `${TipoEstado} - ${Fecha}`;
 
 	return (
 		<>
-			<button className={CardStyles}>
-				<div className={CardEstadoColor}>{TipoEstado === "Pendiente" ? "Hoy" : ""}</div>
-				<p className={CardText}><span>{TipoEstado}</span><span>{Fecha}</span></p>
-				<figure><FlechaDerecha tamaño={34} color="var(--color-blanco)" /></figure>
+			<button className={ReservaCardContenedor}>
+				<div className={ReservaCardSeccionEncabezado}>
+					<div className={reservaCardIndicadorConEstado}>{TipoEstado === "Pendiente" ? "Hoy" : ""}</div>
+					<p className={ReservaCardTextoEncabezado}>{Texto}</p>
+					<figure><FlechaDerecha tamaño={42} color="var(--color-blanco)" /></figure>
+				</div>
+				<span className={ReservaCardLineDivisoria}></span>
+				<div className={ReservaCardSeccionPieDePagina}>
+					<span className={ReservaCardInformacion}>Reservados: 7</span>
+					<InfoMini />
+					<figure className={ReservaCardIconoExpandir}><FlechaAbajo tamaño={42} color="var(--color-blanco)" /></figure>
+				</div>
 			</button>
 		</>
 	);
