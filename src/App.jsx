@@ -4,7 +4,6 @@ import Chips from './components/Chips.jsx'
 
 const ContainerChips = css({
   display: 'flex',
-  justifyContent: 'center',
   gap: '1rem',
 })
 
@@ -18,7 +17,9 @@ function App() {
           <Chips key={index} fecha={fecha} />
         ))}
       </div>
-      <Card TipoEstado={"Terminado"} Fecha={"14, Dic"} />
+      <main>
+        <Card TipoEstado={"Terminado"} Fecha={"14, Dic"} />
+      </main>
     </>
   )
 }
