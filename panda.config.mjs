@@ -24,10 +24,14 @@ export default defineConfig({
       '--fuente-work-sans': "'Work Sans', sans-serif"
     },
     'body': {
-      background: '#1b1a1a'
+      background: '#1b1a1a',
+      height: '100dvh'
     },
     '#root': {
-      maxWidth: '1350px',
+      display: 'grid',
+      placeItems: 'center',
+      gap: '1rem',
+      maxWidth: '850px',
       margin: '0 auto',
       background: 'var(--color-negro)'
     },
