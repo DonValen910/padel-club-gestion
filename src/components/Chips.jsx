@@ -1,4 +1,4 @@
-import { css } from '../../styled-system/css'
+import { css } from '../../styled-system/css';
 
 const ChipsDefault = css({
     width: '80px',
@@ -8,12 +8,21 @@ const ChipsDefault = css({
     border: '1px solid var(--color-blanco)',
     display: 'grid',
     placeItems: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
 })
 
-function Chips({ fecha }) {
+const ChipsSelected = css({
+    backgroundColor: 'var(--color-blanco)',
+    color: 'var(--color-negro)'
+})
+
+function Chips({ fecha, isSelected, onSelect }) {
     return (
-        <div className={ChipsDefault}>
+        <div 
+            className={isSelected ? `${ChipsDefault} ${ChipsSelected}` : ChipsDefault}
+            onClick={onSelect}
+        >
             {fecha}
         </div>
     );

@@ -37,12 +37,20 @@ function App() {
     setFechas(calcularRangosDias(month, year));
   };
 
+  const [selectedChip, setSelectedChip] = useState(null);
+
+
   return (
     <>
       <Select onDateChange={handleDateChange} />
       <div className={ContainerChips}>
         {fechas.map((fecha, index) => (
-          <Chips key={index} fecha={fecha} />
+          <Chips 
+            key={index} 
+            fecha={fecha} 
+            isSelected={selectedChip === index}
+            onSelect={() => setSelectedChip(index)}
+          />
         ))}
       </div>
       <main>
