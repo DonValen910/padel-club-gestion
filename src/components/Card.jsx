@@ -1,4 +1,5 @@
 import { css } from '../../styled-system/css'
+import { useNavigate } from 'react-router'
 import FlechaDerecha from './icons/FlechaDerecha';
 import FlechaAbajo from './icons/FlechaAbajo';
 import InfoMini from './InfoMini';
@@ -56,6 +57,7 @@ const ReservaCardIconoExpandir = css({
 })
 
 function Card({ TipoEstado, Fecha }) {
+	const navigate = useNavigate();
 	let estadoColor = '';
 
 	switch (TipoEstado) {
@@ -93,7 +95,7 @@ function Card({ TipoEstado, Fecha }) {
 	return (
 		<>
 			<button className={ReservaCardContenedor}>
-				<div className={ReservaCardSeccionEncabezado}>
+				<div className={ReservaCardSeccionEncabezado} onClick={() => navigate('/day')}>
 					<div className={reservaCardIndicadorConEstado}>{TipoEstado === "Pendiente" ? "Hoy" : ""}</div>
 					<p className={ReservaCardTextoEncabezado}>{Texto}</p>
 					<figure><FlechaDerecha tamaño={42} color="var(--color-blanco)" /></figure>

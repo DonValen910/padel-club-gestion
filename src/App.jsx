@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router'
 import dayjs from 'dayjs'
 import { css } from '../styled-system/css'
 import Card from './components/Card.jsx'
 import Chips from './components/Chips.jsx'
 import Select from './components/Select.jsx'
+import DayPage from './pages/days/DayPage.jsx'
 
 const ContainerChips = css({
   display: 'flex',
@@ -41,22 +43,27 @@ function App() {
 
 
   return (
-    <>
-      <Select onDateChange={handleDateChange} />
-      <div className={ContainerChips}>
-        {fechas.map((fecha, index) => (
-          <Chips 
-            key={index} 
-            fecha={fecha} 
-            isSelected={selectedChip === index}
-            onSelect={() => setSelectedChip(index)}
-          />
-        ))}
-      </div>
-      <main>
-        <Card TipoEstado={"Terminado"} Fecha={"14, Dic"} />
-      </main>
-    </>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <Select onDateChange={handleDateChange} />
+          <div className={ContainerChips}>
+            {fechas.map((fecha, index) => (
+              <Chips 
+                key={index} 
+                fecha={fecha} 
+                isSelected={selectedChip === index}
+                onSelect={() => setSelectedChip(index)}
+              />
+            ))}
+          </div>
+          <main>
+            <Card TipoEstado={"Pendiente"} Fecha={"14, Dic"} />
+          </main>
+        </>
+      } />
+      <Route path="/day" element={<DayPage />} />
+    </Routes>
   )
 }
 
