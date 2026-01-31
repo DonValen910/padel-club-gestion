@@ -1,7 +1,7 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
-import { css } from '@/styled-system/css';
+import { css } from '@styled-system/css';
 
 dayjs.locale("es");
 
