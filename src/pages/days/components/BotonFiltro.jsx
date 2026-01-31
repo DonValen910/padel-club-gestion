@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import IconConfiguracion from '../../../components/icons/Configuracion';
-import { css, cx } from '../../../../styled-system/css';
+import IconConfiguracion from '@/components/icons/Configuracion';
+import { css, cx } from '@styled-system/css';
 
 const BotonFiltroEstilo = css({
     backgroundColor: 'var(--color-negro)',

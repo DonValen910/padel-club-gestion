@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 import dayjs from 'dayjs'
-import { css } from '../styled-system/css'
+import { css } from '@styled-system/css'
 import Card from './components/Card.jsx'
 import Chips from './components/Chips.jsx'
 import Select from './components/Select.jsx'

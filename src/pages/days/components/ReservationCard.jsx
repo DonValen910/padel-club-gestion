@@ -1,6 +1,6 @@
 import React from 'react'
-import { css } from '../../../../styled-system/css';
-import FlechaAbajo from '../../../components/icons/FlechaAbajo';
+import { css } from '@styled-system/css';
+import FlechaAbajo from '@/components/icons/FlechaAbajo';
 
 const ReservaCardContenedor = css({
     width: '300px',

@@ -1,4 +1,4 @@
-import { css } from '../../styled-system/css'
+import { css } from '@styled-system/css'
 import { useNavigate } from 'react-router'
 import FlechaDerecha from './icons/FlechaDerecha';
 import FlechaAbajo from './icons/FlechaAbajo';

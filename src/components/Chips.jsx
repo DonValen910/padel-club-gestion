@@ -1,4 +1,4 @@
-import { css } from '../../styled-system/css';
+import { css } from '@styled-system/css';
 
 const ChipsDefault = css({
     width: '80px',

@@ -1,4 +1,4 @@
-import { css } from '../../../styled-system/css'
+import { css } from '@styled-system/css'
 import DayHeader from "./DayHeader";
 import DayFooter from "./DayFooter";
 import BotonFiltro from "./components/BotonFiltro";
