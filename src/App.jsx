@@ -6,6 +6,7 @@ import Card from './components/Card.jsx'
 import Chips from './components/Chips.jsx'
 import Select from './components/Select.jsx'
 import DayPage from './pages/days/DayPage.jsx'
+import ReservationFormPage from './pages/reservations/ReservationFormPage.jsx'
 
 const ContainerChips = css({
   display: 'flex',
@@ -63,6 +64,7 @@ function App() {
         </>
       } />
       <Route path="/day" element={<DayPage />} />
+      <Route path="/reservation" element={<ReservationFormPage />} />
     </Routes>
   )
 }

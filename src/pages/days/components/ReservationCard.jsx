@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@styled-system/css';
 import FlechaAbajo from '@/components/icons/FlechaAbajo';
+import { useNavigate } from 'react-router'
 
 const ReservaCardContenedor = css({
     width: '300px',
@@ -15,6 +16,11 @@ const ReservaCardContenedor = css({
     flexDirection: 'column',
     gap: '.5rem',
     padding: '10px 15px'
+})
+
+const ReservaCardHeader = css({
+    width: '100%',
+    cursor: 'pointer'
 })
 
 const ReservaCardTitulo = css({
@@ -42,10 +48,6 @@ const ReservaCardLineDivisoria = css({
     backgroundColor: 'var(--color-blanco)'
 })
 
-const ReservaCardSeccionPieDePagina = css({
-    width: '100%',
-})
-
 const ReservaCardIconoExpandir = css({
     width: '100%',
     display: 'grid',
@@ -55,12 +57,16 @@ const ReservaCardIconoExpandir = css({
 
 export default function ReservationCard({ nombre, numCancha, seña, horaInicio, horaFin }) {
     const horario = `${horaInicio} - ${horaFin}`;
+    const navigate = useNavigate();
+
 
     return (
         <div className={ReservaCardContenedor}>
-            <h2 className={ReservaCardTitulo}>{nombre}</h2>
-            <div className={ReservaCardDetalles}><span>Cancha: {numCancha}</span><span>S: {seña}</span></div>
-            <span className={ReservaCardHorario}>{horario}</span>
+            <div className={ReservaCardHeader} onClick={() => navigate('/reservation')}>
+                <h2 className={ReservaCardTitulo}>{nombre}</h2>
+                <div className={ReservaCardDetalles}><span>Cancha: {numCancha}</span><span>S: {seña}</span></div>
+                <span className={ReservaCardHorario}>{horario}</span>
+            </div>
             <span className={ReservaCardLineDivisoria}></span>
             <figure className={ReservaCardIconoExpandir}>
                 <FlechaAbajo tamaño={42} color="var(--color-blanco)" />
