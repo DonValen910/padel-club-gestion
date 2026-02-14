@@ -6,7 +6,7 @@ import Card from './components/Card.jsx'
 import Chips from './components/Chips.jsx'
 import Select from './components/Select.jsx'
 import DayPage from './pages/days/DayPage.jsx'
-import ReservationFormPage from './pages/reservations/ReservationFormPage.jsx'
+import ReservationFormPage from './pages/reservations/ReservationPage.jsx'
 
 const ContainerChips = css({
   display: 'flex',
