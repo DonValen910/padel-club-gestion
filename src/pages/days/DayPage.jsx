@@ -1,6 +1,6 @@
 import { css } from '@styled-system/css'
 import DayFooter from "./DayFooter";
-import BotonFiltro from "./components/BotonFiltro";
+import BotonFiltro from "./components/FilterButton";
 import ReservationCard from "./components/ReservationCard";
 import InfoHeader from '@/components/InfoHeader';
 
