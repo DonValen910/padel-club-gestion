@@ -30,7 +30,7 @@ export default function DayFooter() {
     return (
         <footer className={FooterContenedor}>
             <button className={BotonAtras} onClick={() => navigate('/')}>Atras</button>
-            <button className={BotonAñadir}>Añadir</button>
+            <button className={BotonAñadir} onClick={() => navigate('/reservation')}>Añadir</button>
         </footer>
     )
 }
