@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@styled-system/css'
 import InfoHeader from '@/components/InfoHeader';
 import Field from './components/Field';
+import ReservationFooter from './ReservationFooter';
 
 const ContenedorMain = css({
   width: '100%',
@@ -14,6 +15,7 @@ export default function ReservationPage() {
       <main className={ContenedorMain}>
         <Field />
       </main>
+      <ReservationFooter />
     </>
   )
 }
