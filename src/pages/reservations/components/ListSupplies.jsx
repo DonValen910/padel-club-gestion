@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { css } from '@styled-system/css'
 import { supplies } from '@/data/supplies'
+import ItemSupplies from './ItemSupplies'
 
 const ContainerNav = css({
     display: 'flex',
@@ -23,6 +24,14 @@ const ButtonNav = css({
 const ButtonNavSelected = css({
     backgroundColor: 'var(--color-blanco)',
     color: 'var(--color-negro)'
+})
+
+const ContainerUl = css({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+    placeItems: 'center',
+    gap: '1rem',
+    padding: '1rem'
 })
 
 export default function ListSupplies() {
@@ -51,6 +60,21 @@ export default function ListSupplies() {
                     </button>
                 ))}
             </nav>
+
+            <ul className={ContainerUl}>
+                {supplies
+                    .filter(supply => selectedCategory === 'todo' || supply.category === selectedCategory)
+                    .map(supply => (
+                        <ItemSupplies 
+                            key={supply.id} 
+                            id={supply.id} 
+                            name={supply.name} 
+                            price={supply.price} 
+                            category={supply.category}
+                        />
+                    ))
+                }
+            </ul>
         </div>
     )
 }
