@@ -11,6 +11,7 @@ const BotonFiltroEstilo = css({
     fontFamily: 'var(--fuente-work-sans)',
     fontSize: '22px',
     padding: '5px 15px',
+    margin: '0 auto 0 3rem',
     border: '1px solid var(--color-blanco)',
     borderRadius: '24px',
     cursor: 'pointer',
