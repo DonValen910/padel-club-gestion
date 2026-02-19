@@ -18,6 +18,7 @@ export default defineConfig({
       '--color-verde': '#1AA113',
       '--color-negro': '#010101',
       '--color-blanco': '#F1F1F1',
+      '--color-gris': '#A3A0A0',
       '--color-azul': '#2EA1F4',
 
       '--fuente-montserrat': "'Montserrat', sans-serif",
