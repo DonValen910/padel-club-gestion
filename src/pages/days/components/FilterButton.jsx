@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IconConfiguracion from '@/components/icons/Configuracion';
 import { css, cx } from '@styled-system/css';
 
@@ -22,17 +22,11 @@ const BotonFiltroEstiloActivo = css({
     color: 'var(--color-negro)',
 })
 
-export default function BotonFiltro() {
-    const [activo, setActivo] = useState(false);
-
-    const handleClick = () => {
-        setActivo(!activo);
-    };
-
+export default function BotonFiltro({ activo, toggleFiltro }) {
     return (
         <button 
             className={cx(BotonFiltroEstilo, activo && BotonFiltroEstiloActivo)} 
-            onClick={handleClick}
+            onClick={toggleFiltro}
         >
             <IconConfiguracion color={activo ? 'var(--color-negro)' : 'var(--color-blanco)'} tamaño={30} />
             Filtro
