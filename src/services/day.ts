@@ -9,7 +9,17 @@ export async function getDayByMonth(year: number, month: number) {
 
   const { data, error } = await supabase
     .from("days")
-    .select("*")
+    .select(
+      `*,
+        reservations(
+            id,
+            nombre,
+            cancha,
+            hora_inicio,
+            hora_fin,
+            seña
+        )`,
+    )
     .gte("date", startDate)
     .lte("date", endDate)
     .order("date", { ascending: true });
