@@ -58,9 +58,10 @@ const ReservaCardIconoExpandir = css({
 
 function Card({ TipoEstado, Fecha }) {
 	const navigate = useNavigate();
+	const tipoEstadoCapitalizado = TipoEstado.charAt(0).toUpperCase() + TipoEstado.slice(1).toLowerCase();
 	let estadoColor = '';
 
-	switch (TipoEstado) {
+	switch (tipoEstadoCapitalizado) {
 		case "Pendiente":
 			estadoColor = css({
 				backgroundColor: 'var(--color-naranja)',
@@ -90,7 +91,7 @@ function Card({ TipoEstado, Fecha }) {
 	}
 
 	const reservaCardIndicadorConEstado = `${ReservaCardIndicadorEstadoBase} ${estadoColor}`
-	const Texto = `${TipoEstado} - ${Fecha}`;
+	const Texto = `${tipoEstadoCapitalizado} - ${Fecha}`;
 
 	return (
 		<>
