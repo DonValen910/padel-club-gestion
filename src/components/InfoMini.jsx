@@ -6,14 +6,17 @@ const InfoMiniStyles = css({
     fontSize: '1.125rem',
     color: 'var(--color-negro)',
     padding: '0.125rem 1rem',
-    background: 'var(--color-azul)',
+    background: 'var(--color-blanco)',
     borderRadius: '1rem'
 })
 
-function InfoMini() {
+function InfoMini({ nombre, cancha, hora_inicio, hora_fin, seña }) {
+    const horario = `${hora_inicio.slice(0, 5)}/${hora_fin.slice(0, 5)}`;
+    const señaTexto = seña > 0 ? `S/${seña}` : `S/S`;
+    
     return (
         <div className={InfoMiniStyles}>
-            <span>Matías</span><span>17:30</span><span>S/S</span><span>Can 1</span>
+            <span>{nombre}</span><span>{horario}</span><span>{señaTexto}</span><span>Can {cancha}</span>
         </div>
     );
 }
