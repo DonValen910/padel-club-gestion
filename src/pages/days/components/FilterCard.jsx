@@ -94,6 +94,8 @@ export default function FilterCard() {
   const [inputCheckedDepositWith, setInputCheckedDepositWith] = useState(false);
   const [inputCheckedDepositWithout, setInputCheckedDepositWithout] =
     useState(false);
+  const [scheduleStarts, setScheduleStarts] = useState("");
+  const [scheduleEnds, setScheduleEnds] = useState("");
 
   const toggleCancha1 = () => setInputCheckedCancha1((prev) => !prev);
   const toggleCancha2 = () => setInputCheckedCancha2((prev) => !prev);
@@ -101,6 +103,60 @@ export default function FilterCard() {
   const toggleDepositWith = () => setInputCheckedDepositWith((prev) => !prev);
   const toggleDepositWithout = () =>
     setInputCheckedDepositWithout((prev) => !prev);
+
+  const handleTimeInput = (value, setValue) => {
+    // Solo permitir números
+    const numbers = value.replace(/[^\d]/g, "");
+    
+    // Limitar a 4 dígitos (HHMM)
+    const limitedNumbers = numbers.slice(0, 4);
+    
+    if (limitedNumbers.length === 0) {
+      setValue("");
+      return;
+    }
+    
+    // Validar horas (primeros 2 dígitos)
+    if (limitedNumbers.length >= 1) {
+      const firstDigit = parseInt(limitedNumbers[0]);
+      if (firstDigit > 2) {
+        setValue(limitedNumbers[0]);
+        return;
+      }
+    }
+    
+    if (limitedNumbers.length >= 2) {
+      const hours = parseInt(limitedNumbers.slice(0, 2));
+      if (hours > 23) {
+        setValue(limitedNumbers.slice(0, 1));
+        return;
+      }
+    }
+    
+    // Validar minutos (últimos 2 dígitos)
+    if (limitedNumbers.length >= 3) {
+      const minuteFirstDigit = parseInt(limitedNumbers[2]);
+      if (minuteFirstDigit > 5) {
+        setValue(limitedNumbers.slice(0, 2) + ":");
+        return;
+      }
+    }
+    
+    if (limitedNumbers.length === 4) {
+      const minutes = parseInt(limitedNumbers.slice(2, 4));
+      if (minutes > 59) {
+        setValue(limitedNumbers.slice(0, 2) + ":" + limitedNumbers[2]);
+        return;
+      }
+    }
+    
+    // Formatear con ":"
+    if (limitedNumbers.length <= 2) {
+      setValue(limitedNumbers);
+    } else {
+      setValue(limitedNumbers.slice(0, 2) + ":" + limitedNumbers.slice(2));
+    }
+  };
   return (
     <div className={`${ContenedorTarjeta}`}>
       <div className={ContenedorInput1}>
@@ -121,19 +177,25 @@ export default function FilterCard() {
           <div className={GrupoInput}>
             <input
               className={`${Input} ${InputNumber}`}
-              type="number"
+              type="text"
               name="scheduleStarts"
               id="scheduleStarts"
-              placeholder="Empieza"
+              placeholder="00:00"
+              value={scheduleStarts}
+              onChange={(e) => handleTimeInput(e.target.value, setScheduleStarts)}
+              maxLength={5}
             />
           </div>
           <div className={GrupoInput}>
             <input
               className={`${Input} ${InputNumber}`}
-              type="number"
+              type="text"
               name="scheduleEnds"
               id="scheduleEnds"
-              placeholder="Termina"
+              placeholder="00:00"
+              value={scheduleEnds}
+              onChange={(e) => handleTimeInput(e.target.value, setScheduleEnds)}
+              maxLength={5}
             />
           </div>
         </div>
