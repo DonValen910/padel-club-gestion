@@ -4,6 +4,7 @@ import { useState } from "react";
 import FlechaDerecha from "./icons/FlechaDerecha";
 import FlechaAbajo from "./icons/FlechaAbajo";
 import InfoMini from "./InfoMini";
+import { useDayStore } from "@/store/useDayStore";
 
 const ReservaCardContenedor = css({
   minHeight: "70px",
@@ -57,12 +58,18 @@ const ReservaCardIconoExpandir = css({
   cursor: "pointer",
 });
 
-function Card({ TipoEstado, Fecha, reservations = [] }) {
+function Card({ TipoEstado, Fecha, reservations = [], day }) {
   const navigate = useNavigate();
+  const setSelectedDay = useDayStore(state => state.setSelectedDay);
   const [expandido, setExpandido] = useState(false);
   const tipoEstadoCapitalizado =
     TipoEstado.charAt(0).toUpperCase() + TipoEstado.slice(1).toLowerCase();
   let estadoColor = "";
+
+  const handleNavigate = () => {
+    setSelectedDay(day);
+    navigate("/day");
+  }
 
   switch (tipoEstadoCapitalizado) {
     case "Pendiente":
@@ -101,7 +108,7 @@ function Card({ TipoEstado, Fecha, reservations = [] }) {
       <div className={ReservaCardContenedor}>
         <div
           className={ReservaCardSeccionEncabezado}
-          onClick={() => navigate("/day")}
+          onClick={handleNavigate}
         >
           <div className={reservaCardIndicadorConEstado}>
             {TipoEstado === "Pendiente" ? "Hoy" : ""}
