@@ -23,9 +23,13 @@ interface Day {
 interface DayStore {
     selectedDay: Day | null;
     setSelectedDay: (day: Day) => void;
+    selectedReservation: Reservation | null;
+    setSelectedReservation: (reservation: Reservation | null) => void;
 }
 
 export const useDayStore = create<DayStore>((set) => ({
     selectedDay: null,
     setSelectedDay: (day) => set({ selectedDay: day }),
+    selectedReservation: null,
+    setSelectedReservation: (reservation) => set({ selectedReservation: reservation }),
 }));
