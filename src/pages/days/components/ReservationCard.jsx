@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@styled-system/css';
 import FlechaAbajo from '@/components/icons/FlechaAbajo';
 import { useNavigate } from 'react-router'
+import { useDayStore } from '@/store/useDayStore';
 
 const ReservaCardContenedor = css({
     width: '300px',
@@ -55,14 +56,19 @@ const ReservaCardIconoExpandir = css({
     cursor: 'pointer'
 })
 
-export default function ReservationCard({ nombre, numCancha, seña, horaInicio, horaFin }) {
+export default function ReservationCard({ nombre, numCancha, seña, horaInicio, horaFin, reservation }) {
     const horario = `${horaInicio} - ${horaFin}`;
     const navigate = useNavigate();
+    const setSelectedReservation = useDayStore(state => state.setSelectedReservation);
 
+    const handleClick = () => {
+        setSelectedReservation(reservation);
+        navigate('/reservation');
+    }
 
     return (
         <div className={ReservaCardContenedor}>
-            <div className={ReservaCardHeader} onClick={() => navigate('/reservation')}>
+            <div className={ReservaCardHeader} onClick={handleClick}>
                 <h2 className={ReservaCardTitulo}>{nombre}</h2>
                 <div className={ReservaCardDetalles}><span>Cancha: {numCancha}</span><span>S: {seña}</span></div>
                 <span className={ReservaCardHorario}>{horario}</span>
