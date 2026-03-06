@@ -1,34 +1,56 @@
-import { useState } from 'react';
-import { css } from '@styled-system/css'
+import { useState } from "react";
+import { css } from "@styled-system/css";
+import dayjs from "dayjs";
 import DayFooter from "./DayFooter";
 import BotonFiltro from "./components/FilterButton";
 import ReservationCard from "./components/ReservationCard";
-import InfoHeader from '@/components/InfoHeader';
-import FilterCard from './components/FilterCard';
+import InfoHeader from "@/components/InfoHeader";
+import FilterCard from "./components/FilterCard";
+import { useDayStore } from "@/store/useDayStore";
 
 const ContenedorCard = css({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '1rem'
-})
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "1rem",
+});
 
 export default function DayPage() {
-    const [filtroActivo, setFiltroActivo] = useState(false);
+  const [filtroActivo, setFiltroActivo] = useState(false);
+  const selectedDay = useDayStore((state) => state.selectedDay);
 
-    const toggleFiltro = () => {
-        setFiltroActivo(!filtroActivo);
-    };
+  if (!selectedDay) {
+    return <p style={{ color: "white" }}>No hay día seleccionado</p>;
+  }
 
-    return (
-        <>
-            <InfoHeader TipoEstado="Terminado" Fecha="14, Dic" NumReservas={7} />
-            <BotonFiltro activo={filtroActivo} toggleFiltro={toggleFiltro} />
-            <main className={ContenedorCard}>
-                <ReservationCard nombre={'Matias'} numCancha={1} seña={8000} horaInicio={"17:00"} horaFin={"18:00"} />
-                {filtroActivo && <FilterCard />}
-            </main>
-            <DayFooter />
-        </>
-    )
+  const fecha = dayjs(selectedDay.date).format("D, MMM");
+  const reservations = selectedDay.reservations ?? [];
+
+  return (
+    <>
+      <InfoHeader
+        TipoEstado={selectedDay.status}
+        Fecha={fecha}
+        NumReservas={reservations.length}
+      />
+      <BotonFiltro
+        activo={filtroActivo}
+        toggleFiltro={() => setFiltroActivo(!filtroActivo)}
+      />
+      <main className={ContenedorCard}>
+        {reservations.map((r) => (
+          <ReservationCard
+            key={r.id}
+            nombre={r.nombre}
+            numCancha={r.cancha}
+            seña={r.seña}
+            horaInicio={r.hora_inicio.slice(0, 5)}
+            horaFin={r.hora_fin.slice(0, 5)}
+          />
+        ))}
+        {filtroActivo && <FilterCard />}
+      </main>
+      <DayFooter />
+    </>
+  );
 }
