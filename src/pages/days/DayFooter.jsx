@@ -24,13 +24,13 @@ const BotonAñadir = css({
     cursor: 'pointer',
 })
 
-export default function DayFooter() {
+export default function DayFooter({ onAdd }) {
 	const navigate = useNavigate();
 
     return (
         <footer className={FooterContenedor}>
             <button className={BotonAtras} onClick={() => navigate('/')}>Atras</button>
-            <button className={BotonAñadir} onClick={() => navigate('/reservation')}>Añadir</button>
+            <button className={BotonAñadir} onClick={() => {onAdd(); navigate('/reservation')}}>Añadir</button>
         </footer>
     )
 }

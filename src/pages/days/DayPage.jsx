@@ -18,6 +18,9 @@ const ContenedorCard = css({
 export default function DayPage() {
   const [filtroActivo, setFiltroActivo] = useState(false);
   const selectedDay = useDayStore((state) => state.selectedDay);
+  const setSelectedReservation = useDayStore(
+    (state) => state.setSelectedReservation,
+  );
 
   if (!selectedDay) {
     return <p style={{ color: "white" }}>No hay día seleccionado</p>;
@@ -46,11 +49,12 @@ export default function DayPage() {
             seña={r.seña}
             horaInicio={r.hora_inicio.slice(0, 5)}
             horaFin={r.hora_fin.slice(0, 5)}
+            reservation={r}
           />
         ))}
         {filtroActivo && <FilterCard />}
       </main>
-      <DayFooter />
+      <DayFooter onAdd={() => setSelectedReservation(null)} />
     </>
   );
 }
