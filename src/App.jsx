@@ -94,6 +94,7 @@ function App() {
                     TipoEstado={day.status}
                     Fecha={dayjs(day.date).format("D, MMM")}
                     reservations={day.reservations}
+                    day={day}
                   />
                 ))}
               {!loading && !error && days.length === 0 && (
